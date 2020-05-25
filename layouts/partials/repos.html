@@ -1,17 +1,58 @@
-<h2>Repos</h2>
-<dl>
+<h1 class="display-2 pb-4">Repos</h1>
+<div class="row">
     {{ $urlPre := "https://api.github.com/" }}
     {{ $repoJ := getJSON $urlPre "orgs/ErtoGit/repos" }}
     {{ range $repoJ }}
     {{ if .private }}
     {{ else }}
-        <dt><a href="{{ .html_url }}" target="_blank">{{ .name }}</a></dt>
-        <dd>Decription: {{ .description }}</dd>
-        <dd>Created at: {{ .created_at }}</dd>
-        <dd>Last Pushed: {{ .pushed_at }}</dd>
-        <dd>Clone URL (https): {{ .clone_url }}</dd>
-        <dd>Homepage: {{ .homepage }}</dd>
-        <dd>Screenshot: <img src="https://image.thum.io/get/width/400/crop/400/{{ .homepage }}" alt=""></dd>
+    <div class="col-xs-12 col-md-4 pb-5">
+        <div class="card">
+            {{ if eq .homepage 0 }}
+            <img class="card-img-top" src="https://img.static.my.id/400x600&text=ErtoGit" alt="{{ .name }}">
+            {{ else }}
+            <img class="card-img-top" src="https://image.thum.io/get/width/400/crop/600/{{ .homepage }}" alt="{{ .name }}">
+            {{ end }}
+            <div class="card-body">
+                <h4 class="card-subtitle pb-2"><a href="{{ .html_url }}">{{ .name }}</a></h4>
+                <p class="card-text">
+                    {{ .description }}
+                </p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <dt>Created at:</dt>
+                    <dd>{{ .created_at }}</dd>
+                </li>
+                <li class="list-group-item">
+                    <dt>Last pushed:</dt>
+                    <dd>{{ .pushed_at }}</dd>
+                </li>
+                <li class="list-group-item">
+                    <dt>Homepage:</dt>
+                    <dd>{{ .homepage }}</dd>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Stars
+                    <span class="badge badge-primary badge-pill">{{ .stargazers_count }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Watchers
+                    <span class="badge badge-primary badge-pill">{{ .watchers_count }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Forks
+                    <span class="badge badge-primary badge-pill">{{ .forks_count }}</span>
+                </li>
+            </ul>
+            <div class="card-footer text-small">
+                <dl>
+                    <dt>Clone URL (https)</dt>
+                    <dd><code>{{ .clone_url }}</code></dd>
+                </dl>
+                <span class="badge badge-info">{{ .language }}</span>
+            </div>
+        </div>
+    </div>
     {{ end }}
     {{ end }}
-</dl>
+</div>
