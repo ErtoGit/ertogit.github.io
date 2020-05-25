@@ -1,13 +1,19 @@
+{{ define "title" }}{{ end}}
+
 {{ define "main" }}
-<h1>Welcome... ??</h1>
-    <ul>
-        {{ $urlPre := "https://api.github.com" }}
-        {{ $gistJ := getJSON $urlPre "/orgs/ertogit/repos" }}
-        {{ range $gistJ }}
-        {{ if .public }}
-            <li><a href="{{ .html_url }}" target="_blank">{{ .description }}</a></li>
-        {{ end }}
-        {{ end }}
-    </ul>
+<dl>
+    {{ $urlPre := "https://api.github.com/" }}
+    {{ $gistJ := getJSON $urlPre "orgs/ertogit/repos" }}
+    {{ range $gistJ }}
+    {{ if .private }}
+    {{ else }}
+        <dt><a href="{{ .html_url }}" target="_blank">{{ .name }}</a></dt>
+        <dd>Decription: {{ .description }}</dd>
+        <dd>Created at: {{ .created_at }}</dd>
+        <dd>Last Pushed: {{ .pushed_at }}</dd>
+        <dd>Clone URL (https): {{ .clone_url }}</dd>
+    {{ end }}
+    {{ end }}
+</dl>
 
 {{ end }}
