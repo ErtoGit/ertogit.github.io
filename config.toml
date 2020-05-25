@@ -4,3 +4,6 @@ title = "ErtoGit Repos"
 publishDir = "public"
 
 disableKinds = ["taxonomy", "taxonomyTerm"]
+
+[params]
+    avatar = "https://avatars3.githubusercontent.com/u/55881977?v=4"

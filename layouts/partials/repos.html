@@ -1,0 +1,15 @@
+<h2>Repos</h2>
+<dl>
+    {{ $urlPre := "https://api.github.com/" }}
+    {{ $repoJ := getJSON $urlPre "orgs/ErtoGit/repos" }}
+    {{ range $repoJ }}
+    {{ if .private }}
+    {{ else }}
+        <dt><a href="{{ .html_url }}" target="_blank">{{ .name }}</a></dt>
+        <dd>Decription: {{ .description }}</dd>
+        <dd>Created at: {{ .created_at }}</dd>
+        <dd>Last Pushed: {{ .pushed_at }}</dd>
+        <dd>Clone URL (https): {{ .clone_url }}</dd>
+    {{ end }}
+    {{ end }}
+</dl>
