@@ -10,6 +10,8 @@
         <dd>Created at: {{ .created_at }}</dd>
         <dd>Last Pushed: {{ .pushed_at }}</dd>
         <dd>Clone URL (https): {{ .clone_url }}</dd>
+        <dd>Homepage: {{ .homepage }}</dd>
+        <dd>Screenshot: <img src="https://image.thum.io/get/width/400/crop/400/{{ .homepage }}" alt=""></dd>
     {{ end }}
     {{ end }}
 </dl>
