@@ -4,7 +4,6 @@ deploy-stable.sh
 
 # Local Netlify folder
 .netlify/
-public/
 
 # Logs
 logs
