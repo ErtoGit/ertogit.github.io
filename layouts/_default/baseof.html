@@ -1,7 +1,3 @@
-<?php
-  // Testing
-?>
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -20,7 +16,8 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <h1>Welcome... ??</h1>
+    {{ block "main" . }}
+    {{ end }}
     
     <script src="" async defer></script>
   </body>
